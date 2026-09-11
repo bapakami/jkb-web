@@ -1,0 +1,64 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source "../**/*.blade.php";
+@source "../**/*.js";
+@source "../**/*.vue";
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --color-jkb-yellow: #FFC72C;
+    --color-jkb-yellow-dark: #E6AE00;
+    --color-jkb-gray: #6D6E71;
+    --color-jkb-gray-dark: #4A4B4E;
+    --color-jkb-gray-light: #F4F4F2;
+    --color-jkb-navy: #2B2E33;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+    }
+}
+
+@utility btn-jkb-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    background-image: linear-gradient(90deg, var(--color-jkb-yellow) 0%, rgba(230, 174, 0, 1) 100%);
+    color: var(--color-jkb-navy);
+    font-weight: 700;
+    box-shadow: inset 0 0 0 0 var(--color-jkb-yellow-dark);
+    transition: 0.4s;
+}
+
+.btn-jkb-pill:hover {
+    box-shadow: inset 300px 0 0 0 var(--color-jkb-navy);
+    color: var(--color-jkb-yellow);
+}
+
+@utility section-title-line {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.counter-underline-wrap {
+    position: relative;
+}
