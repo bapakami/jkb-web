@@ -86,6 +86,7 @@ class TrafficWeb extends Page implements HasForms, HasTable
                     ->searchable()
                     ->live(),
             ])
+            ->statePath('data')
             ->columns(4);
     }
 
@@ -163,7 +164,7 @@ class TrafficWeb extends Page implements HasForms, HasTable
                 $to = Carbon::parse($this->data['to'])->endOfDay();
             }
         } else {
-            $from = now()->subDays((int) $range)->startOfDay();
+            $from = now()->subDays((int) $range - 1)->startOfDay();
             $to = now()->endOfDay();
         }
 
