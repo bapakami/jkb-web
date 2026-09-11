@@ -25,27 +25,21 @@
     </div>
 
     <x-filament::section icon="heroicon-o-chart-bar" heading="Tren Kunjungan Harian" icon-color="primary">
-        @if ($trend)
-            @php($max = max(array_column($trend, 'count')) ?: 1)
-            <div class="flex h-56 items-end gap-1.5">
-                @foreach ($trend as $point)
-                    <div class="flex h-full flex-1 flex-col items-center justify-end">
-                        <div
-                            class="w-full max-w-[32px] rounded-t bg-primary-500/70 transition hover:bg-primary-500"
-                            style="height: {{ (int) round(($point['count'] / $max) * 100) }}%"
-                            title="{{ $point['label'] }}: {{ $point['count'] }} kunjungan"
-                        ></div>
-                    </div>
-                @endforeach
-            </div>
-            <div class="mt-2 flex gap-1.5">
-                @foreach ($trend as $point)
-                    <div class="flex-1 text-center text-[10px] leading-3 text-gray-400">{{ $point['label'] }}</div>
-                @endforeach
-            </div>
-        @else
-            <p class="text-sm text-gray-500 dark:text-gray-400">Belum ada data kunjungan.</p>
-        @endif
+        @php($max = $trend ? max(array_column($trend, 'count')) : 1)
+        <div style="display:flex; align-items:flex-end; gap:6px; height:13rem; padding-top:0.5rem;">
+            @foreach ($trend as $point)
+                @php($h = (int) round(($point['count'] / $max) * 100))
+                <div
+                    title="{{ $point['label'] }}: {{ $point['count'] }} kunjungan"
+                    style="flex:1 1 0%; max-width:36px; min-height:3px; height:{{ $h }}%; {{ $h > 0 ? 'background:#FFC72C; opacity:0.82;' : 'background:rgba(255,199,44,0.25);' }} border-radius:6px 6px 0 0;"
+                ></div>
+            @endforeach
+        </div>
+        <div style="display:flex; gap:6px; margin-top:8px; border-top:1px solid rgba(156,163,175,0.35); padding-top:6px;">
+            @foreach ($trend as $point)
+                <div style="flex:1 1 0%; text-align:center; font-size:10px; line-height:12px; color:#7A8699;">{{ $point['label'] }}</div>
+            @endforeach
+        </div>
     </x-filament::section>
 
     <x-filament::section icon="heroicon-o-list-bullet" heading="Rincian Kunjungan" icon-color="primary">
