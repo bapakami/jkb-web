@@ -8,8 +8,9 @@
         :description="$category->description"
     />
 
-    <section class="bg-jkb-gray-light py-16">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="relative overflow-hidden bg-jkb-gray-light py-16">
+        <div class="jkb-glow -right-28 top-16 h-96 w-96 bg-jkb-yellow/20"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             @if ($products->isEmpty())
                 <div class="py-16 text-center">
                     <x-heroicon-m-cube class="mx-auto h-12 w-12 text-jkb-yellow-dark" />
@@ -31,7 +32,7 @@
                     <h2 class="text-lg font-black text-jkb-gray-dark">Kategori Lain</h2>
                     <div class="mt-4 flex flex-wrap gap-3">
                         @foreach ($otherCategories as $oc)
-                            <a href="{{ route('products.category', $oc) }}" class="rounded-full border border-jkb-gray-light bg-white px-5 py-2 text-sm font-semibold text-jkb-gray-dark transition-colors hover:border-jkb-yellow hover:bg-jkb-yellow/20">
+                            <a href="{{ route('products.category', $oc) }}" class="rounded-full glass px-5 py-2 text-sm font-semibold text-jkb-gray-dark ring-1 ring-white/60 transition-colors hover:bg-jkb-yellow/25 hover:ring-jkb-yellow/60">
                                 {{ $oc->name }}
                             </a>
                         @endforeach

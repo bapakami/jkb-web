@@ -11,7 +11,7 @@
     $lineColor = $light ? 'bg-jkb-yellow' : 'bg-jkb-yellow-dark';
 @endphp
 
-<div @class(['flex flex-col', $alignClass])>
+<div @class(['jkb-reveal flex flex-col', $alignClass])>
     @if ($eyebrow)
         <span @class([
             'inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em]',

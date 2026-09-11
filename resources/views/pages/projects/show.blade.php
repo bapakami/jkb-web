@@ -8,8 +8,9 @@
         :description="($project->client_name ? 'Klien: ' . $project->client_name : null) . ($project->location ? ' — ' . $project->location : null) . ($project->year ? ' — ' . $project->year : null)"
     />
 
-    <section class="bg-white py-16">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="relative overflow-hidden bg-white py-16">
+        <div class="jkb-glow -left-32 top-24 h-96 w-96 bg-jkb-yellow/15"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <nav class="flex flex-wrap items-center gap-1.5 text-xs font-medium text-jkb-gray">
                 <a href="{{ route('projects.index') }}" class="hover:text-jkb-yellow-dark">Proyek</a>
                 <x-heroicon-m-chevron-right class="h-3.5 w-3.5" />
@@ -18,7 +19,7 @@
                 <span class="text-jkb-gray-dark">{{ $project->title }}</span>
             </nav>
 
-            <div class="mt-8 overflow-hidden rounded-2xl border border-jkb-gray-light">
+            <div class="jkb-reveal mt-8 overflow-hidden rounded-2xl glass p-2 shadow-sm ring-1 ring-white/60">
                 @if ($project->featured_image)
                     <img src="{{ asset('storage/' . $project->featured_image) }}" alt="{{ $project->title }}" class="aspect-video w-full object-cover">
                 @else
@@ -45,7 +46,7 @@
 
                     @if($project->video_url)
                         <h2 class="mt-10 text-xl font-black text-jkb-gray-dark">Video Proyek</h2>
-                        <div class="mt-4 aspect-video overflow-hidden rounded-xl border border-jkb-gray-light">
+                        <div class="mt-4 aspect-video overflow-hidden rounded-xl glass ring-1 ring-white/60">
                             <video controls playsinline class="h-full w-full bg-black">
                                 <source src="{{ $project->video_url }}" type="video/mp4">
                                 Browser Anda tidak mendukung pemutaran video.
@@ -55,7 +56,7 @@
                 </div>
 
                 <aside class="space-y-6">
-                    <div class="rounded-xl border border-jkb-gray-light bg-jkb-gray-light/50 p-6">
+                    <div class="rounded-xl glass p-6 ring-1 ring-white/60 shadow-sm">
                         <h3 class="text-lg font-black text-jkb-gray-dark">Butuh Pasokan Beton Serupa?</h3>
                         <p class="mt-2 text-sm leading-relaxed text-jkb-gray">Konsultasikan kebutuhan proyek Anda dengan tim teknis kami. Solusi mix design disesuaikan spesifikasi proyek.</p>
                         <a href="{{ route('contact') }}" class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-jkb-yellow px-5 py-3 text-sm font-bold text-jkb-navy transition-colors hover:bg-jkb-yellow-dark">
@@ -71,7 +72,7 @@
                     @foreach ($project->gallery as $img)
                         @php $path = normalize_image_path($img); @endphp
                         @if ($path)
-                        <div class="overflow-hidden rounded-xl border border-jkb-gray-light">
+                        <div class="overflow-hidden rounded-xl glass ring-1 ring-white/60">
                             <img src="{{ asset('storage/' . $path) }}" alt="Galeri {{ $project->title }}" loading="lazy" class="aspect-video w-full object-cover transition-transform hover:scale-105">
                         </div>
                         @endif
@@ -84,7 +85,7 @@
                     <h2 class="text-xl font-black text-jkb-gray-dark">Proyek Lainnya</h2>
                     <div class="mt-6 grid gap-6 md:grid-cols-3">
                         @foreach ($otherProjects as $p)
-                            <article class="group overflow-hidden rounded-xl border border-jkb-gray-light bg-white shadow-sm">
+                            <article class="group jkb-reveal overflow-hidden rounded-2xl glass shadow-sm ring-1 ring-white/60">
                                 <div class="relative h-40 overflow-hidden">
                                     @if ($p->featured_image)
                                         <img src="{{ asset('storage/' . $p->featured_image) }}" alt="{{ $p->title }}" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy">

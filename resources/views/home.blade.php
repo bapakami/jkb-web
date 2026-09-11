@@ -136,6 +136,22 @@
             border-radius: 999px;
         }
         .jkb-map-tooltip-addr { margin-top: 6px; font-size: 0.78rem; color: #C9CDD4; }
+
+        .jkb-map-tooltip-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #171A1F;
+            background: #FFC72C;
+            padding: 5px 11px;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: background 0.15s ease, transform 0.15s ease;
+        }
+        .jkb-map-tooltip-link:hover { background: #FFD55C; transform: translateY(-1px); }
     </style>
     @endpush
 
@@ -203,7 +219,7 @@
                 <div id="hero-track" class="flex transition-transform duration-700 ease-in-out">
                 @foreach ($slides as $i => $slide)
                     <div class="w-full shrink-0" aria-hidden="true">
-                        <div class="max-w-3xl rounded-2xl bg-white/[0.06] p-7 ring-1 ring-white/10 backdrop-blur-sm sm:p-10">
+                        <div class="max-w-3xl rounded-3xl glass-dark p-7 ring-1 ring-white/15 shadow-[0_20px_60px_rgba(0,0,0,0.35)] sm:p-10">
                         <span class="inline-flex items-center gap-2 rounded-full bg-jkb-yellow/15 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-jkb-yellow ring-1 ring-inset ring-jkb-yellow/30">
                             {!! $slide['badge'] !!}
                         </span>
@@ -235,11 +251,11 @@
                 </div>
 
                 <button type="button" id="hero-prev" aria-label="Slide sebelumnya"
-                    class="absolute -left-4 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-jkb-yellow hover:text-jkb-navy lg:grid">
+                    class="absolute -left-4 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur-md transition hover:bg-jkb-yellow hover:text-jkb-navy lg:grid">
                     <x-heroicon-m-chevron-left class="h-6 w-6" />
                 </button>
                 <button type="button" id="hero-next" aria-label="Slide berikutnya"
-                    class="absolute -right-4 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-jkb-yellow hover:text-jkb-navy lg:grid">
+                    class="absolute -right-4 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur-md transition hover:bg-jkb-yellow hover:text-jkb-navy lg:grid">
                     <x-heroicon-m-chevron-right class="h-6 w-6" />
                 </button>
             </div>
@@ -260,7 +276,7 @@
             @endphp
             <div class="mt-12 grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-4">
                 @foreach ($stats as $stat)
-                    <div class="rounded-xl border border-white/10 bg-white/5 p-5 text-center backdrop-blur">
+                    <div class="glass-dark rounded-xl p-5 text-center ring-1 ring-white/15">
                         <div class="text-2xl font-black text-jkb-yellow sm:text-3xl">
                             <span x-countup="{{ $stat['value'] }}">0</span>{{ $stat['suffix'] }}
                         </div>
@@ -354,8 +370,9 @@
     </script>
 
     {{-- KEUNGGULAN --}}
-    <section class="bg-white py-20">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="relative overflow-hidden bg-white py-20">
+        <div class="jkb-glow -left-24 top-24 h-80 w-80 bg-jkb-yellow/20"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <x-section-heading
                 eyebrow="Keunggulan JKB"
                 title="Lima Jaminan yang Membuat Beton Kami Kokoh"
@@ -374,7 +391,7 @@
                     ];
                 @endphp
                 @foreach ($advantages as $i => $adv)
-                    <div class="group relative rounded-xl border border-jkb-gray-light p-6 transition-all hover:-translate-y-1 hover:border-jkb-yellow hover:shadow-lg">
+                    <div class="group jkb-reveal relative rounded-2xl glass p-6 ring-1 ring-white/60 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:ring-jkb-yellow/60 hover:shadow-[0_18px_44px_rgba(15,23,42,0.12)]">
                         <div class="grid h-12 w-12 place-items-center rounded-lg bg-jkb-yellow/15 text-jkb-gray-dark transition-colors group-hover:bg-jkb-yellow">
                             <x-dynamic-component :component="'heroicon-m-' . $adv['icon']" class="h-6 w-6" />
                         </div>
@@ -387,8 +404,10 @@
     </section>
 
     {{-- TEPAT WAKTU / GPS --}}
-    <section class="overflow-hidden bg-jkb-gray-light py-20">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="relative overflow-hidden bg-jkb-gray-light py-20">
+        <div class="jkb-glow -right-28 top-16 h-96 w-96 bg-jkb-yellow/20"></div>
+        <div class="jkb-glow -left-32 bottom-0 h-80 w-80 bg-white/40"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid items-center gap-12 lg:grid-cols-2">
                 <div>
                     <x-section-heading
@@ -421,58 +440,17 @@
                 </div>
 
                 <div class="relative">
-                    <div class="aspect-[4/3] rounded-2xl bg-white p-6 shadow-xl ring-1 ring-jkb-gray-light">
-                        <div class="flex items-center justify-between border-b border-jkb-gray-light pb-4">
-                            <div class="flex items-center gap-2">
-                                <span class="h-3 w-3 rounded-full bg-green-500"></span>
-                                <span class="text-sm font-semibold text-jkb-gray-dark">Control Room JKB</span>
-                            </div>
-                            <span class="rounded bg-jkb-yellow/20 px-2 py-0.5 text-[0.65rem] font-bold text-jkb-gray-dark">LIVE</span>
-                        </div>
-
-                        <div class="mt-4 grid h-44 place-items-center rounded-lg bg-jkb-gray-light">
-                            <svg viewBox="0 0 400 200" class="h-full w-full" aria-hidden="true">
-                                <path d="M20 170 C 90 40, 150 190, 230 70 S 360 150, 380 40" fill="none" stroke="#FFC72C" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 8"/>
-                                <path d="M20 175 C 80 90, 160 130, 250 80 S 340 120, 385 80" fill="none" stroke="#6D6E71" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 10" opacity="0.6"/>
-                                @foreach ([[60,150],[140,150],[210,90],[280,110],[350,90]] as $dot)
-                                    <circle cx="{{ $dot[0] }}" cy="{{ $dot[1] }}" r="6" fill="#FFC72C" stroke="#fff" stroke-width="2"/>
-                                @endforeach
-                            </svg>
-                        </div>
-
-                        <div class="mt-4 grid grid-cols-3 gap-3 text-center text-xs">
-                            <div class="rounded-lg bg-jkb-gray-light p-3">
-                                <div class="text-sm font-black text-jkb-gray-dark">12</div>
-                                <div class="mt-0.5 text-jkb-gray">Mixer Aktif</div>
-                            </div>
-                            <div class="rounded-lg bg-jkb-gray-light p-3">
-                                <div class="text-sm font-black text-jkb-gray-dark">3</div>
-                                <div class="mt-0.5 text-jkb-gray">Proyek On-Going</div>
-                            </div>
-                            <div class="rounded-lg bg-jkb-gray-light p-3">
-                                <div class="text-sm font-black text-jkb-gray-dark">0</div>
-                                <div class="mt-0.5 text-jkb-gray">Keterlambatan</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="absolute -bottom-5 -left-5 rounded-xl bg-jkb-yellow p-4 shadow-lg sm:-left-8">
-                        <div class="flex items-center gap-3">
-                            <x-heroicon-m-map-pin class="h-8 w-8 text-jkb-navy" />
-                            <div>
-                                <div class="text-sm font-black text-jkb-navy">Jangkauan<br>Jawa Tengah</div>
-                            </div>
-                        </div>
-                    </div>
+                    <x-concrete-calculator />
                 </div>
             </div>
         </div>
     </section>
 
     {{-- ISO --}}
-    <section class="bg-white py-16">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col items-center gap-8 rounded-2xl border border-jkb-gray-light bg-jkb-gray-light/50 p-8 md:flex-row md:justify-between md:p-10">
+    <section class="relative overflow-hidden bg-white py-16">
+        <div class="jkb-glow -right-24 top-1/2 h-72 w-72 -translate-y-1/2 bg-jkb-yellow/15"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="jkb-reveal flex flex-col items-center gap-8 rounded-2xl glass p-8 ring-1 ring-white/60 shadow-sm md:flex-row md:justify-between md:p-10">
                 <div class="flex items-center gap-5">
                     <div class="grid h-16 w-16 shrink-0 place-items-center rounded-xl bg-jkb-navy">
                         <x-heroicon-m-check-badge class="h-9 w-9 text-jkb-yellow" />
@@ -494,8 +472,10 @@
     </section>
 
     {{-- PENGALAMAN / KATEGORI PROYEK --}}
-    <section class="bg-jkb-navy py-20 text-white">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="relative overflow-hidden bg-jkb-navy py-20 text-white">
+        <div class="jkb-glow -left-24 top-10 h-96 w-96 bg-jkb-yellow/10"></div>
+        <div class="jkb-glow -right-24 bottom-0 h-80 w-80 bg-jkb-yellow/[0.06]"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid items-end gap-8 lg:grid-cols-[1fr_auto]">
                 <x-section-heading
                     eyebrow="Pengalaman"
@@ -519,8 +499,8 @@
                     ];
                 @endphp
                 @foreach ($projectCats as $cat)
-                    <div class="group rounded-xl border border-white/10 bg-white/5 p-8 transition-colors hover:border-jkb-yellow/60 hover:bg-white/10">
-                        <div class="grid h-14 w-14 place-items-center rounded-xl bg-jkb-yellow text-jkb-navy">
+                    <div class="group jkb-reveal rounded-2xl glass-dark p-8 ring-1 ring-white/10 transition-all duration-300 hover:bg-white/[0.12] hover:ring-jkb-yellow/50">
+                        <div class="grid h-14 w-14 place-items-center rounded-xl bg-jkb-yellow/15 text-jkb-yellow ring-1 ring-inset ring-jkb-yellow/30">
                             <x-dynamic-component :component="'heroicon-m-' . $cat['icon']" class="h-7 w-7" />
                         </div>
                         <h3 class="mt-6 text-xl font-bold">{{ $cat['label'] }}</h3>
@@ -537,8 +517,9 @@
     </section>
 
     {{-- PRODUK PILIHAN --}}
-    <section class="bg-white py-20">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="relative overflow-hidden bg-white py-20">
+        <div class="jkb-glow -right-32 top-24 h-96 w-96 bg-jkb-yellow/15"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid items-end gap-8 lg:grid-cols-[1fr_auto]">
                 <x-section-heading
                     eyebrow="Produk Pilihan"
@@ -555,7 +536,7 @@
             @if ($categories->isNotEmpty())
                 <div class="mt-12 grid gap-6 md:grid-cols-3">
                     @foreach ($categories as $category)
-                        <div class="group flex flex-col overflow-hidden rounded-xl border border-jkb-gray-light bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl">
+                        <div class="group jkb-reveal flex flex-col overflow-hidden rounded-2xl glass ring-1 ring-white/60 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(15,23,42,0.15)]">
                             <a href="{{ route('products.category', $category) }}" class="relative block aspect-[16/11] overflow-hidden bg-jkb-gray-light">
                                 @if ($category->image)
                                     <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" loading="lazy"
@@ -605,8 +586,9 @@
     </section>
 
     {{-- CABANG --}}
-    <section class="bg-jkb-gray-light py-20">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="relative overflow-hidden bg-jkb-gray-light py-20">
+        <div class="jkb-glow -left-28 top-20 h-96 w-96 bg-jkb-yellow/20"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <x-section-heading
                 eyebrow="Jangkauan Kami"
                 title="Sebaran Cabang di Jawa Tengah"
@@ -649,18 +631,20 @@
                 })->values();
             @endphp
 
-            <div class="mt-12 grid items-center gap-8 lg:grid-cols-[1.2fr_1fr]">
-                <div class="relative z-0 h-[400px] overflow-hidden rounded-2xl bg-jkb-navy shadow-sm ring-1 ring-jkb-gray-light sm:h-[460px] lg:h-[500px]">
+            <div class="mt-12 grid items-start gap-8 lg:grid-cols-[1.2fr_1fr]">
+                <div class="relative z-0 h-[400px] overflow-hidden rounded-2xl bg-jkb-navy shadow-sm ring-1 ring-white/60 sm:h-[460px] lg:h-[500px]">
                     <div id="home-branch-map" class="jkb-map-container relative h-full w-full"
                         data-markers='{{ $mapBranches->toJson() }}'>
                         <div class="jkb-map-overlay"></div>
                     </div>
                 </div>
 
-                <div class="flex flex-col justify-center gap-4 lg:max-h-[500px] lg:overflow-y-auto lg:pr-1">
+                {{-- 5 card penuh (ikon 44px + p-4 + baris link maps) + 5 celah 16px, potongan jatuh di celah antar card --}}
+                <div class="jkb-scroll-fade flex flex-col gap-4 lg:max-h-[calc(5*var(--jkb-item)_+_5*var(--jkb-gap))] lg:overflow-y-auto lg:pr-1"
+                    style="--jkb-item:100px; --jkb-gap:16px;">
                     @foreach ($branches as $branch)
-                        <a href="{{ route('branches.show', $branch) }}" data-map-index="{{ $loop->index }}"
-                            class="group flex items-center gap-4 rounded-xl border border-jkb-gray-light bg-white p-4 shadow-sm transition hover:border-jkb-yellow hover:shadow-md">
+                        <div data-map-index="{{ $loop->index }}" role="button" tabindex="0"
+                            class="group flex cursor-pointer items-center gap-4 rounded-xl glass p-4 ring-1 ring-white/60 shadow-sm transition hover:ring-jkb-yellow/60 hover:shadow-[0_12px_32px_rgba(15,23,42,0.10)]">
                             <div class="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-jkb-gray-light text-jkb-gray-dark transition-colors group-hover:bg-jkb-yellow">
                                 <x-heroicon-m-map-pin class="h-5 w-5" />
                             </div>
@@ -672,9 +656,15 @@
                                     </span>
                                 </div>
                                 <p class="truncate text-xs text-jkb-gray">{{ $branch->address }}</p>
+                                <a href="https://www.google.com/maps?q={{ $mapBranches[$loop->index]['lat'] }},{{ $mapBranches[$loop->index]['lng'] }}"
+                                    target="_blank" rel="noopener"
+                                    class="mt-1.5 inline-flex items-center gap-1 rounded-full bg-jkb-yellow px-2.5 py-1 text-[0.7rem] font-bold uppercase tracking-wide text-jkb-navy transition hover:bg-jkb-yellow/80">
+                                    <x-heroicon-m-arrow-top-right-on-square class="h-3.5 w-3.5" />
+                                    Buka di Google Maps
+                                </a>
                             </div>
                             <x-heroicon-m-chevron-right class="ml-auto h-5 w-5 shrink-0 text-jkb-gray transition-transform group-hover:translate-x-1 group-hover:text-jkb-gray-dark" />
-                        </a>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -683,8 +673,9 @@
 
     {{-- KLIEN & MITRA --}}
     @if ($clients->isNotEmpty())
-        <section class="bg-white py-16">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section class="relative overflow-hidden bg-white py-16">
+            <div class="jkb-glow -right-24 top-10 h-72 w-72 bg-jkb-yellow/15"></div>
+            <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <x-section-heading
                     eyebrow="Klien & Mitra"
                     title="Dipercaya Perusahaan Ternama"
@@ -692,7 +683,7 @@
                 />
                 <div class="mt-10 grid grid-cols-2 items-center gap-6 sm:grid-cols-3 lg:grid-cols-6">
                     @foreach ($clients as $client)
-                        <div class="grid h-20 place-items-center rounded-xl border border-jkb-gray-light bg-white grayscale transition-all hover:border-jkb-yellow hover:grayscale-0">
+                        <div class="grid h-20 place-items-center rounded-xl glass ring-1 ring-white/60 grayscale transition-all hover:ring-jkb-yellow/60 hover:grayscale-0">
                             @if ($client->logo)
                                 <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->name }}" loading="lazy" class="max-h-12 object-contain">
                             @else
@@ -717,7 +708,7 @@
                 />
                 <div class="mt-12 grid gap-6 md:grid-cols-3">
                     @foreach ($testimonials as $testimonial)
-                        <figure class="flex flex-col rounded-xl border border-white/10 bg-white/5 p-6">
+                        <figure class="jkb-reveal flex flex-col rounded-2xl glass-dark p-6 ring-1 ring-white/15">
                             <div class="flex text-jkb-yellow">
                                 @for ($i = 1; $i <= 5; $i++)
                                     <x-heroicon-m-star class="h-4 w-4 {{ $i <= $testimonial->rating ? '' : 'opacity-25' }}" />
@@ -806,7 +797,11 @@
                     '<span class="jkb-map-live-label">Cabang Aktif</span>' +
                     '<span class="jkb-map-tooltip-type">' + m.type + '</span>' +
                 '</div>' +
-                '<div class="jkb-map-tooltip-addr">' + m.address + '</div>',
+                '<div class="jkb-map-tooltip-addr">' + m.address + '</div>' +
+                '<a class="jkb-map-tooltip-link" href="https://www.google.com/maps?q=' + m.lat + ',' + m.lng + '" target="_blank" rel="noopener">' +
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>' +
+                    'Buka di Google Maps' +
+                '</a>',
                 { className: 'jkb-map-popup', offset: [0, -16] }
             );
             return Object.assign({}, m, { marker: marker });
@@ -840,6 +835,7 @@
 
         document.querySelectorAll('[data-map-index]').forEach(function (card) {
             card.addEventListener('click', function (e) {
+                if (e.target.closest('a[href]')) return;
                 e.preventDefault();
 
                 document.querySelectorAll('[data-map-index]').forEach(function (c) {
@@ -859,6 +855,12 @@
                     map.flyTo(target, Math.max(map.getZoom(), 12), { duration: 1, easeLinearity: 0.15 });
                 } else {
                     item.marker.openPopup();
+                }
+            });
+            card.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
                 }
             });
         });

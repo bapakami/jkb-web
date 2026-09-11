@@ -8,14 +8,15 @@
         description="Enam lokasi di Jawa Tengah siap melayani Anda dengan pasokan beton yang tepat waktu dan berpengalaman."
     />
 
-    <section class="bg-jkb-gray-light py-16">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="relative overflow-hidden bg-jkb-gray-light py-16">
+        <div class="jkb-glow -left-28 top-16 h-96 w-96 bg-jkb-yellow/20"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             @if ($branches->isEmpty())
                 <p class="py-20 text-center text-sm text-jkb-gray">Belum ada data cabang. Silakan hubungi kami melalui halaman kontak.</p>
             @else
                 <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     @foreach ($branches as $branch)
-                        <article class="flex flex-col rounded-xl border border-jkb-gray-light bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
+                        <article class="jkb-reveal flex flex-col rounded-2xl glass p-6 ring-1 ring-white/60 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(15,23,42,0.15)]">
                             <div class="flex items-start justify-between gap-3">
                                 <div class="grid h-11 w-11 place-items-center rounded-lg bg-jkb-yellow">
                                     <x-heroicon-m-map-pin class="h-6 w-6 text-jkb-navy" />

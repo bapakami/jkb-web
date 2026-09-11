@@ -19,7 +19,7 @@
             @else
                 <div class="space-y-5">
                     @foreach ($careers as $career)
-                        <article class="flex flex-col gap-4 rounded-xl border border-jkb-gray-light bg-white p-6 shadow-sm transition-all hover:shadow-md sm:flex-row sm:items-center sm:justify-between">
+                        <article class="jkb-reveal flex flex-col gap-4 rounded-2xl glass p-6 ring-1 ring-white/60 shadow-sm transition-all duration-300 hover:shadow-[0_18px_44px_rgba(15,23,42,0.15)] sm:flex-row sm:items-center sm:justify-between">
                             <div>
                                 <h2 class="text-lg font-black text-jkb-gray-dark">
                                     <a href="{{ route('careers.show', $career) }}" class="hover:text-jkb-yellow-dark">{{ $career->title }}</a>

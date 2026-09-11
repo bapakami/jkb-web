@@ -11,10 +11,11 @@
     ];
 @endphp
 
-<header x-data="{ mobileOpen: false, productOpen: false, routeIsProduct: {{ request()->routeIs('products.*') ? 'true' : 'false' }} }" @class([
-    'sticky top-0 z-40 border-b border-jkb-gray-light bg-white/95 backdrop-blur',
-    'shadow-sm' => request()->routeIs('home') === false,
-])>
+<header x-data="{ mobileOpen: false, productOpen: false, routeIsProduct: {{ request()->routeIs('products.*') ? 'true' : 'false' }}, scrolled: false }"
+    @scroll.window="scrolled = window.scrollY > 8"
+    x-init="scrolled = window.scrollY > 8 || {{ request()->routeIs('home') ? 'false' : 'true' }}"
+    :class="scrolled ? 'bg-white/80 shadow-[0_10px_40px_rgba(0,0,0,0.10)]' : 'bg-white/70 shadow-none'"
+    class="sticky top-0 z-40 border-b border-white/60 backdrop-blur-2xl transition-[background-color,box-shadow] duration-300">
     <nav class="mx-auto flex h-28 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8" aria-label="Navigasi utama">
         <a href="{{ route('home') }}" class="shrink-0" aria-label="JKB Beranda">
             <x-logo class="h-24 w-auto" />
@@ -48,7 +49,7 @@
                     x-transition:leave="transition ease-in duration-150"
                     x-transition:leave-start="opacity-100 translate-y-0 scale-100"
                     x-transition:leave-end="opacity-0 -translate-y-2 scale-95"
-                    class="absolute left-0 top-full z-50 mt-2 w-64 rounded-xl border border-jkb-gray-light bg-white p-1.5 shadow-xl">
+                    class="absolute left-0 top-full z-50 mt-2 w-64 rounded-xl glass-strong p-1.5 shadow-xl">
                     @forelse ($categories as $category)
                         <a href="{{ route('products.category', $category) }}"
                             class="block rounded-lg px-3 py-2 text-sm text-jkb-gray-dark transition-colors hover:bg-jkb-yellow/10">
@@ -81,7 +82,7 @@
         </div>
     </nav>
 
-    <div x-show="mobileOpen" x-cloak x-transition class="border-t border-jkb-gray-light bg-white lg:hidden">
+    <div x-show="mobileOpen" x-cloak x-transition class="glass-strong border-t border-white/60 lg:hidden">
         <div class="space-y-1 px-4 py-3">
             <a href="{{ route('home') }}" class="block rounded-md px-3 py-2 text-sm font-semibold text-jkb-gray-dark hover:bg-jkb-gray-light">Beranda</a>
             <a href="{{ route('about') }}" class="block rounded-md px-3 py-2 text-sm font-semibold text-jkb-gray-dark hover:bg-jkb-gray-light">Tentang Kami</a>

@@ -1,6 +1,6 @@
 @props(['product'])
 
-<div class="group flex flex-col overflow-hidden rounded-xl border border-jkb-gray-light bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
+<div class="group jkb-reveal flex flex-col overflow-hidden rounded-xl glass ring-1 ring-white/60 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(15,23,42,0.16)]">
     <a href="{{ route('products.show', [$product->category, $product]) }}" class="relative block aspect-[16/10] overflow-hidden bg-jkb-gray-light">
         @if ($product->image)
             <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" loading="lazy"
@@ -10,7 +10,7 @@
                 <x-heroicon-m-cube class="h-12 w-12 text-jkb-gray" />
             </div>
         @endif
-        <span class="absolute left-3 top-3 rounded bg-jkb-navy/85 px-2.5 py-1 text-[0.7rem] font-bold uppercase tracking-wide text-jkb-yellow backdrop-blur">
+        <span class="absolute left-3 top-3 rounded bg-jkb-navy/70 px-2.5 py-1 text-[0.7rem] font-bold uppercase tracking-wide text-jkb-yellow ring-1 ring-white/15 backdrop-blur-md">
             {{ $product->category?->name }}
         </span>
     </a>

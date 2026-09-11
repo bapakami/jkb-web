@@ -7,8 +7,9 @@
         :eyebrow="'Cabang · ' . ($branch->type ?: 'Lokasi')"
     />
 
-    <section class="bg-white py-16">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="relative overflow-hidden bg-white py-16">
+        <div class="jkb-glow -left-32 top-24 h-96 w-96 bg-jkb-yellow/15"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <nav class="flex flex-wrap items-center gap-1.5 text-xs font-medium text-jkb-gray">
                 <a href="{{ route('branches.index') }}" class="hover:text-jkb-yellow-dark">Cabang</a>
                 <x-heroicon-m-chevron-right class="h-3.5 w-3.5" />
@@ -17,14 +18,14 @@
 
             <div class="mt-8 grid gap-8 lg:grid-cols-2">
                 <div class="space-y-5">
-                    <div class="rounded-xl border border-jkb-gray-light p-6">
+                    <div class="rounded-xl glass p-6 ring-1 ring-white/60 shadow-sm">
                         <h2 class="flex items-center gap-2 text-lg font-black text-jkb-gray-dark">
                             <x-heroicon-m-map-pin class="h-5 w-5 text-jkb-yellow-dark" /> Alamat
                         </h2>
                         <p class="mt-2 text-sm leading-relaxed text-jkb-gray">{{ $branch->address }}</p>
                     </div>
 
-                    <div class="rounded-xl border border-jkb-gray-light p-6">
+                    <div class="rounded-xl glass p-6 ring-1 ring-white/60 shadow-sm">
                         <h2 class="text-lg font-black text-jkb-gray-dark">Kontak</h2>
                         <div class="mt-3 space-y-2.5 text-sm">
                             @if ($branch->phone)
@@ -64,7 +65,7 @@
                     </div>
                 </div>
 
-                <div class="overflow-hidden rounded-xl border border-jkb-gray-light bg-jkb-gray-light/40">
+                <div class="overflow-hidden rounded-xl glass ring-1 ring-white/60 shadow-sm">
                     @if ($branch->map_url)
                         <iframe title="Peta {{ $branch->name }}" src="{{ $branch->map_url }}" width="100%" height="100%" class="min-h-[24rem] w-full border-0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
                     @elseif ($branch->latitude && $branch->longitude)
@@ -85,7 +86,7 @@
                     <h2 class="text-xl font-black text-jkb-gray-dark">Cabang Lainnya</h2>
                     <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                         @foreach ($otherBranches as $ob)
-                            <a href="{{ route('branches.show', $ob) }}" class="group flex items-center justify-between rounded-xl border border-jkb-gray-light bg-white p-5 shadow-sm transition-all hover:border-jkb-yellow hover:shadow-md">
+                            <a href="{{ route('branches.show', $ob) }}" class="group jkb-reveal flex items-center justify-between rounded-xl glass p-5 shadow-sm ring-1 ring-white/60 transition-all hover:ring-jkb-yellow/60 hover:shadow-[0_12px_32px_rgba(15,23,42,0.12)]">
                                 <div>
                                     <p class="font-bold text-jkb-gray-dark group-hover:text-jkb-yellow-dark">{{ $ob->name }}</p>
                                     <p class="mt-0.5 truncate text-xs text-jkb-gray">{{ $ob->address }}</p>

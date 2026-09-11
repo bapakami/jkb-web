@@ -8,14 +8,15 @@
         description="Kabar terbaru dari JKB — informasi produksi, proyek, dan seputar dunia konstruksi beton."
     />
 
-    <section class="bg-jkb-gray-light py-16">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="relative overflow-hidden bg-jkb-gray-light py-16">
+        <div class="jkb-glow -right-28 top-16 h-96 w-96 bg-jkb-yellow/20"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             @if ($news->isEmpty())
                 <p class="py-20 text-center text-sm text-jkb-gray">Belum ada berita yang diterbitkan.</p>
             @else
                 <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     @foreach ($news as $item)
-                        <article class="group flex flex-col overflow-hidden rounded-xl border border-jkb-gray-light bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
+                        <article class="group jkb-reveal flex flex-col overflow-hidden rounded-2xl glass ring-1 ring-white/60 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(15,23,42,0.15)]">
                             <div class="relative h-48 overflow-hidden">
                                 @if ($item->image)
                                     <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy">

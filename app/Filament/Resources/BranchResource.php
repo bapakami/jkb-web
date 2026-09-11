@@ -34,7 +34,7 @@ class BranchResource extends Resource
                             ->required()
                             ->maxLength(255)
                             ->label('Nama Cabang')
-                            ->live()
+                            ->lazy()
                             ->afterStateUpdated(fn (Forms\Set $set, ?string $state) => $set('slug', \Illuminate\Support\Str::slug($state))),
                         Forms\Components\TextInput::make('slug')->maxLength(255),
                         Forms\Components\Select::make('type')

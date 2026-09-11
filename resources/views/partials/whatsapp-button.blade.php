@@ -11,7 +11,7 @@
         x-transition:leave="transition ease-in duration-200"
         x-transition:leave-start="opacity-100 translate-y-0 scale-100"
         x-transition:leave-end="opacity-0 translate-y-4 scale-95"
-        class="mb-3 w-[340px] max-w-[calc(100vw-3rem)] overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/5"
+        class="mb-3 w-[340px] max-w-[calc(100vw-3rem)] overflow-hidden rounded-2xl glass-strong ring-1 ring-white/60 shadow-2xl"
         style="display:none">
         <div class="flex items-center gap-3 bg-jkb-navy px-5 py-4 text-white">
             <div class="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white/10">

@@ -40,7 +40,7 @@ class ProductResource extends Resource
                             ->required()
                             ->maxLength(255)
                             ->helperText('Kosongkan slug agar dibuat otomatis')
-                            ->live()
+                            ->lazy()
                             ->afterStateUpdated(fn (Forms\Set $set, ?string $state) => $set('slug', \Illuminate\Support\Str::slug($state))),
                         Forms\Components\TextInput::make('slug')
                             ->maxLength(255),

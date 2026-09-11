@@ -35,13 +35,17 @@ class CareerResource extends Resource
                             ->required()
                             ->maxLength(255)
                             ->label('Posisi')
-                            ->live()
+                            ->lazy()
                             ->afterStateUpdated(fn (Forms\Set $set, ?string $state) => $set('slug', \Illuminate\Support\Str::slug($state))),
                         Forms\Components\TextInput::make('slug')->maxLength(255),
-                        Forms\Components\TextInput::make('type')
-                            ->maxLength(255)
+                        Forms\Components\Select::make('type')
                             ->label('Tipe Pekerjaan')
-                            ->placeholder('Full-time / Part-time / Magang'),
+                            ->options([
+                                'Full-time' => 'Full time',
+                                'Part-time' => 'Part time',
+                                'Magang' => 'Magang',
+                            ])
+                            ->required(),
                         Forms\Components\TextInput::make('location')
                             ->maxLength(255)
                             ->label('Lokasi'),
@@ -91,10 +95,9 @@ class CareerResource extends Resource
                 Tables\Filters\TernaryFilter::make('is_active')->label('Status'),
                 Tables\Filters\SelectFilter::make('type')
                     ->options([
-                        'Full-time' => 'Full-time',
-                        'Part-time' => 'Part-time',
+                        'Full-time' => 'Full time',
+                        'Part-time' => 'Part time',
                         'Magang' => 'Magang',
-                        'Kontrak' => 'Kontrak',
                     ])
                     ->label('Tipe'),
             ])

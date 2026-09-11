@@ -34,7 +34,7 @@ class NewsResource extends Resource
                             ->required()
                             ->maxLength(255)
                             ->label('Judul')
-                            ->live()
+                            ->lazy()
                             ->afterStateUpdated(fn (Forms\Set $set, ?string $state) => $set('slug', \Illuminate\Support\Str::slug($state))),
                         Forms\Components\TextInput::make('slug')->maxLength(255),
                         Forms\Components\TextInput::make('category')

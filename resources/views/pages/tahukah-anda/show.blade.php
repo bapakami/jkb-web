@@ -8,8 +8,9 @@
         :description="$tahukahAnda->subtitle"
     />
 
-    <section class="bg-white py-16">
-        <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <section class="relative overflow-hidden bg-white py-16">
+        <div class="jkb-glow -left-32 top-24 h-96 w-96 bg-jkb-yellow/15"></div>
+        <div class="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <nav class="flex flex-wrap items-center gap-1.5 text-xs font-medium text-jkb-gray">
                 <a href="{{ route('tahukah-anda.index') }}" class="hover:text-jkb-yellow-dark">Tahukah Anda</a>
                 <x-heroicon-m-chevron-right class="h-3.5 w-3.5" />
@@ -17,7 +18,7 @@
             </nav>
 
             @if ($tahukahAnda->image)
-                <div class="mt-8 overflow-hidden rounded-2xl border border-jkb-gray-light">
+                <div class="jkb-reveal mt-8 overflow-hidden rounded-2xl glass p-2 shadow-sm ring-1 ring-white/60">
                     <img src="{{ asset('storage/' . $tahukahAnda->image) }}" alt="{{ $tahukahAnda->title }}" class="w-full object-cover">
                 </div>
             @endif
@@ -26,7 +27,7 @@
                 {!! $tahukahAnda->content !!}
             </div>
 
-            <div class="mt-12 rounded-xl border border-jkb-gray-light bg-jkb-yellow/20 p-6">
+            <div class="mt-12 rounded-xl bg-jkb-yellow/25 p-6 ring-1 ring-jkb-yellow/30 backdrop-blur-md">
                 <h2 class="text-lg font-black text-jkb-gray-dark">Ingin mendirikan bangunan kokoh?</h2>
                 <p class="mt-1 text-sm text-jkb-gray">Percayakan kebutuhan beton proyek Anda pada JKB.</p>
                 <a href="{{ route('contact') }}" class="mt-4 inline-flex items-center gap-2 rounded-lg bg-jkb-navy px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-jkb-gray-dark">
@@ -39,7 +40,7 @@
                     <h2 class="text-xl font-black text-jkb-gray-dark">Artikel Terkait</h2>
                     <div class="mt-6 grid gap-6 md:grid-cols-3">
                         @foreach ($related as $r)
-                            <article class="group overflow-hidden rounded-xl border border-jkb-gray-light bg-white shadow-sm">
+                            <article class="group jkb-reveal overflow-hidden rounded-2xl glass shadow-sm ring-1 ring-white/60">
                                 <div class="relative h-36 overflow-hidden">
                                     @if ($r->image)
                                         <img src="{{ asset('storage/' . $r->image) }}" alt="{{ $r->title }}" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy">

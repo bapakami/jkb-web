@@ -36,15 +36,15 @@
                     </div>
 
                     <div class="mt-8 grid grid-cols-3 gap-4">
-                        <div class="rounded-xl bg-jkb-gray-light p-5 text-center">
+                        <div class="rounded-xl glass p-5 text-center ring-1 ring-white/60">
                             <div class="text-3xl font-black text-jkb-gray-dark">1980</div>
                             <div class="mt-1 text-xs font-semibold text-jkb-gray">Tahun Berdiri</div>
                         </div>
-                        <div class="rounded-xl bg-jkb-yellow/20 p-5 text-center">
+                        <div class="rounded-xl bg-jkb-yellow/25 p-5 text-center ring-1 ring-jkb-yellow/30">
                             <div class="text-3xl font-black text-jkb-gray-dark">{{ $yearsInBusiness }}+</div>
                             <div class="mt-1 text-xs font-semibold text-jkb-gray">Tahun Pengalaman</div>
                         </div>
-                        <div class="rounded-xl bg-jkb-gray-light p-5 text-center">
+                        <div class="rounded-xl glass p-5 text-center ring-1 ring-white/60">
                             <div class="text-3xl font-black text-jkb-gray-dark">{{ $projectCount }}+</div>
                             <div class="mt-1 text-xs font-semibold text-jkb-gray">Proyek Terselesaikan</div>
                         </div>
@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="space-y-6">
-                    <div class="rounded-xl border border-jkb-gray-light bg-white p-7 shadow-sm">
+                    <div class="jkb-reveal rounded-2xl glass p-7 ring-1 ring-white/60 shadow-sm">
                         <div class="grid h-12 w-12 place-items-center rounded-lg bg-jkb-yellow">
                             <x-heroicon-m-bolt class="h-6 w-6 text-jkb-navy" />
                         </div>
@@ -63,7 +63,7 @@
                         </p>
                     </div>
 
-                    <div class="rounded-xl border border-jkb-gray-light bg-white p-7 shadow-sm">
+                    <div class="jkb-reveal rounded-2xl glass p-7 ring-1 ring-white/60 shadow-sm">
                         <div class="grid h-12 w-12 place-items-center rounded-lg bg-jkb-yellow">
                             <x-heroicon-m-flag class="h-6 w-6 text-jkb-navy" />
                         </div>
@@ -80,8 +80,9 @@
         </div>
     </section>
 
-    <section class="bg-jkb-gray-light py-16">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="relative overflow-hidden bg-jkb-gray-light py-16">
+        <div class="jkb-glow -right-28 top-16 h-96 w-96 bg-jkb-yellow/15"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <x-section-heading
                 eyebrow="Sertifikasi"
                 title="Mutu yang Terverifikasi"
@@ -97,7 +98,7 @@
                     ];
                 @endphp
                 @foreach ($cert as $item)
-                    <div class="rounded-xl border border-jkb-gray-light bg-white p-7 shadow-sm">
+                    <div class="jkb-reveal rounded-2xl glass p-7 ring-1 ring-white/60 shadow-sm">
                         <div class="grid h-12 w-12 place-items-center rounded-lg bg-jkb-navy text-jkb-yellow">
                             <x-dynamic-component :component="'heroicon-m-' . $item['icon']" class="h-6 w-6" />
                         </div>
@@ -107,7 +108,7 @@
                 @endforeach
             </div>
             <div class="mt-10 flex justify-center">
-                <div class="w-64 overflow-hidden rounded-xl border border-jkb-gray-light bg-white p-4 shadow-sm">
+                <div class="w-64 overflow-hidden rounded-xl glass p-4 ring-1 ring-white/60 shadow-sm">
                     <img src="{{ asset('images/iso-jkb.webp') }}" alt="Sertifikat ISO 9001:2015" loading="lazy" class="w-full object-contain">
                     <p class="mt-3 text-center text-xs font-semibold text-jkb-gray">Sertifikat ISO 9001:2015</p>
                 </div>
@@ -126,7 +127,7 @@
                 />
                 <div class="mt-10 grid gap-5 sm:grid-cols-3">
                     @foreach ($projectCategories as $pc)
-                        <div class="rounded-xl border border-white/10 bg-white/5 p-6 text-center">
+                        <div class="jkb-reveal rounded-2xl glass-dark p-6 text-center ring-1 ring-white/10">
                             <div class="text-4xl font-black text-jkb-yellow">{{ $pc->total }}</div>
                             <div class="mt-2 font-semibold text-white">{{ $pc->category }}</div>
                         </div>
@@ -137,12 +138,13 @@
     @endif
 
     @if ($clients->isNotEmpty())
-        <section class="bg-white py-16">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section class="relative overflow-hidden bg-white py-16">
+            <div class="jkb-glow -left-24 top-10 h-72 w-72 bg-jkb-yellow/15"></div>
+            <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <x-section-heading eyebrow="Klien & Mitra" title="Dipercaya Banyak Perusahaan" :align="'center'" />
                 <div class="mt-10 grid grid-cols-2 items-center gap-6 sm:grid-cols-3 lg:grid-cols-6">
                     @foreach ($clients as $client)
-                        <div class="grid h-20 place-items-center rounded-xl border border-jkb-gray-light bg-white grayscale transition-all hover:border-jkb-yellow hover:grayscale-0">
+                        <div class="grid h-20 place-items-center rounded-xl glass ring-1 ring-white/60 grayscale transition-all hover:ring-jkb-yellow/60 hover:grayscale-0">
                             @if ($client->logo)
                                 <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->name }}" loading="lazy" class="max-h-12 object-contain">
                             @else

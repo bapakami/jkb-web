@@ -34,8 +34,9 @@
         :description="$product->subtitle ?: $product->summary"
     />
 
-    <section class="bg-white py-16">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="relative overflow-hidden bg-white py-16">
+        <div class="jkb-glow -right-32 top-20 h-96 w-96 bg-jkb-yellow/15"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <nav class="flex flex-wrap items-center gap-1.5 text-xs font-medium text-jkb-gray">
                 <a href="{{ route('products.index') }}" class="hover:text-jkb-yellow-dark">Produk</a>
                 <x-heroicon-m-chevron-right class="h-3.5 w-3.5" />
@@ -46,7 +47,7 @@
 
             <div class="mt-8 grid gap-10 lg:grid-cols-5">
                 <div class="lg:col-span-2">
-                    <div class="overflow-hidden rounded-xl border border-jkb-gray-light">
+                    <div class="jkb-reveal overflow-hidden rounded-2xl glass p-2 shadow-sm ring-1 ring-white/60">
                         @if ($product->image)
                             <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="aspect-square w-full object-cover">
                         @else
@@ -61,7 +62,7 @@
                             @foreach ($product->gallery as $img)
                                 @php $path = normalize_image_path($img); @endphp
                                 @if ($path)
-                                <div class="overflow-hidden rounded-lg border border-jkb-gray-light">
+                                <div class="overflow-hidden rounded-lg glass ring-1 ring-white/60">
                                     <img src="{{ asset('storage/' . $path) }}" alt="{{ $product->name }}" loading="lazy" class="aspect-square w-full object-cover">
                                 </div>
                                 @endif
@@ -83,11 +84,11 @@
 
                     @if (!empty($product->specifications))
                         <h2 class="mt-10 text-xl font-black text-jkb-gray-dark">Spesifikasi Teknis</h2>
-                        <div class="mt-4 overflow-hidden rounded-xl border border-jkb-gray-light">
+                        <div class="mt-4 overflow-hidden rounded-xl glass ring-1 ring-white/60 shadow-sm">
                             <table class="w-full text-left text-sm">
                                 <tbody class="divide-y divide-jkb-gray-light">
                                     @foreach ($product->specifications as $key => $value)
-                                        <tr class="bg-white">
+                                        <tr class="bg-white/60">
                                             <th class="w-2/5 bg-jkb-gray-light/60 px-5 py-3 font-semibold text-jkb-gray-dark">{{ $key }}</th>
                                             <td class="px-5 py-3 text-jkb-gray">{{ $value }}</td>
                                         </tr>

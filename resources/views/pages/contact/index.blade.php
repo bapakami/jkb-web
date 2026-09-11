@@ -8,8 +8,9 @@
         description="Pemohon penawaran, pertanyaan teknis, maupun kerja sama — tim JKB siap membantu Anda."
     />
 
-    <section class="bg-white py-16">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="relative overflow-hidden bg-white py-16">
+        <div class="jkb-glow -right-32 top-20 h-96 w-96 bg-jkb-yellow/15"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid gap-10 lg:grid-cols-5">
                 <div class="lg:col-span-3">
                     @if (session('success'))
@@ -37,7 +38,7 @@
                         </div>
                     @endif
 
-                    <div class="rounded-xl border border-jkb-gray-light p-6 shadow-sm sm:p-8">
+                    <div class="jkb-reveal rounded-xl glass p-6 shadow-sm ring-1 ring-white/60 sm:p-8">
                         <h2 class="text-xl font-black text-jkb-gray-dark">Kirim Pesan</h2>
                         <p class="mt-1 text-sm text-jkb-gray">Isi formulir berikut, kami akan merespons maksimal 1x24 jam kerja.</p>
 
@@ -81,7 +82,7 @@
                 <aside class="space-y-5 lg:col-span-2">
                     @if ($branches->isNotEmpty())
                         @foreach ($branches->take(6) as $branch)
-                            <div class="rounded-xl border border-jkb-gray-light bg-jkb-gray-light/40 p-6">
+                            <div class="rounded-xl glass p-6 ring-1 ring-white/60 shadow-sm">
                                 <div class="flex items-start justify-between gap-3">
                                     <h3 class="font-black text-jkb-gray-dark">{{ $branch->name }}</h3>
                                     @if ($branch->type)
@@ -111,7 +112,7 @@
                             </div>
                         @endforeach
                         @if ($branches->count() > 6)
-                            <a href="{{ route('branches.index') }}" class="flex items-center justify-center gap-1.5 rounded-lg border border-jkb-gray-light bg-white px-5 py-3 text-sm font-bold text-jkb-gray-dark transition-colors hover:border-jkb-yellow">
+                            <a href="{{ route('branches.index') }}" class="flex items-center justify-center gap-1.5 rounded-lg glass px-5 py-3 text-sm font-bold text-jkb-gray-dark ring-1 ring-white/60 transition-colors hover:ring-jkb-yellow/60">
                                 Lihat Semua Cabang <x-heroicon-m-arrow-right class="h-4 w-4" />
                             </a>
                         @endif

@@ -15,7 +15,7 @@
         </svg>
     </div>
     <div class="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-        <nav class="flex items-center gap-2 text-xs text-gray-400" aria-label="Breadcrumb">
+        <nav class="glass-dark inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-xs text-gray-300 ring-1 ring-white/15" aria-label="Breadcrumb">
             <a href="{{ route('home') }}" class="inline-flex items-center gap-1 transition hover:text-jkb-yellow">
                 <x-heroicon-m-home class="h-3.5 w-3.5" />
                 Beranda

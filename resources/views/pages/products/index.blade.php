@@ -8,8 +8,10 @@
         description="{{ 'Jelajahi ' . $productCount . ' produk beton dan material konstruksi JKB yang siap mendukung proyek Anda — dari ready mix tronton hingga precast presisi.' }}"
     />
 
-    <section class="bg-jkb-gray-light py-16">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section class="relative overflow-hidden bg-jkb-gray-light py-16">
+        <div class="jkb-glow -left-28 top-16 h-96 w-96 bg-jkb-yellow/20"></div>
+        <div class="jkb-glow -right-28 bottom-0 h-80 w-80 bg-white/50"></div>
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             @if ($categories->isEmpty())
                 <p class="py-20 text-center text-sm text-jkb-gray">
                     Kami sedang memperbarui daftar produk. Silakan kunjungi kembali nanti atau hubungi kami melalui halaman kontak.
@@ -17,7 +19,7 @@
             @else
                 <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     @foreach ($categories as $i => $category)
-                        <article class="group flex flex-col overflow-hidden rounded-xl border border-jkb-gray-light bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
+                        <article class="group jkb-reveal flex flex-col overflow-hidden rounded-2xl glass ring-1 ring-white/60 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(15,23,42,0.15)]">
                             @if ($category->image)
                                 <div class="relative h-52 overflow-hidden">
                                     <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy">

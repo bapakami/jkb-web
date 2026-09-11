@@ -30,6 +30,131 @@
     }
 }
 
+/* ============================================================
+   Glassmorphism design system
+   ============================================================ */
+
+/* Light frosted glass — for cards/panels on light sections */
+@utility glass {
+    background-color: rgb(255 255 255 / 0.55);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+}
+
+/* Dark frosted glass — for text over imagery / dark sections */
+@utility glass-dark {
+    background-color: rgb(255 255 255 / 0.08);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+}
+
+/* Strong frosted glass — navbar / dropdown / popover */
+@utility glass-strong {
+    background-color: rgb(255 255 255 / 0.7);
+    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px);
+}
+
+/* Thin frosted chip — small badges on top of glass panels */
+@utility glass-chip {
+    background-color: rgb(255 255 255 / 0.4);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+/* Decorative colour source behind glass so the blur reads */
+@utility jkb-glow {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(64px);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Scroll-reveal — applied sparingly, respects reduced motion */
+html.js .jkb-reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+html.js .jkb-reveal.jkb-in {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.js .jkb-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* Keep Alpine-managed elements hidden until initialised (no flash when load is slow) */
+[x-cloak] {
+    display: none !important;
+}
+
+/* Lower blur intensity on small screens to keep performance light */
+@media (max-width: 767px) {
+    .glass,
+    .glass-dark,
+    .glass-strong,
+    .glass-chip {
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
+    }
+
+    .jkb-glow {
+        filter: blur(32px);
+        opacity: 0.4;
+    }
+}
+
+/* Scroll container for branch list — soft fade at top/bottom edge,
+   thin scrollbar. Fade only matters once overflow kicks in (lg+). */
+.jkb-scroll-fade {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(23, 26, 31, 0.25) transparent;
+}
+
+.jkb-scroll-fade::-webkit-scrollbar {
+    width: 4px;
+}
+
+.jkb-scroll-fade::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.jkb-scroll-fade::-webkit-scrollbar-thumb {
+    background: rgba(23, 26, 31, 0.25);
+    border-radius: 9999px;
+}
+
+@media (min-width: 1024px) {
+    .jkb-scroll-fade {
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            transparent 0,
+            #000 18px,
+            #000 calc(100% - 18px),
+            transparent 100%
+        );
+        mask-image: linear-gradient(
+            to bottom,
+            transparent 0,
+            #000 18px,
+            #000 calc(100% - 18px),
+            transparent 100%
+        );
+    }
+}
+
 @utility btn-jkb-pill {
     display: inline-flex;
     align-items: center;
@@ -39,12 +164,16 @@
     background-image: linear-gradient(90deg, var(--color-jkb-yellow) 0%, rgba(230, 174, 0, 1) 100%);
     color: var(--color-jkb-navy);
     font-weight: 700;
-    box-shadow: inset 0 0 0 0 var(--color-jkb-yellow-dark);
+    box-shadow:
+        inset 0 0 0 0 var(--color-jkb-yellow-dark),
+        0 4px 16px rgba(230, 174, 0, 0.35);
     transition: 0.4s;
 }
 
 .btn-jkb-pill:hover {
-    box-shadow: inset 300px 0 0 0 var(--color-jkb-navy);
+    box-shadow:
+        inset 300px 0 0 0 var(--color-jkb-navy),
+        0 6px 20px rgba(43, 46, 51, 0.25);
     color: var(--color-jkb-yellow);
 }
 

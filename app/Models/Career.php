@@ -29,6 +29,15 @@ class Career extends Model
         return $this->type;
     }
 
+    public function getRequirementsListAttribute(): array
+    {
+        return collect($this->requirements ?? [])
+            ->map(fn ($item) => is_array($item) ? ($item['syarat'] ?? '') : $item)
+            ->filter(fn ($item) => trim((string) $item) !== '')
+            ->values()
+            ->all();
+    }
+
     public function scopeOpen(Builder $query): Builder
     {
         return $query->where('is_active', true)
