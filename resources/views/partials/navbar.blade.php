@@ -1,5 +1,4 @@
 @php
-    $categories = \App\Models\ProductCategory::query()->active()->get();
     $menu = [
         ['label' => 'Beranda', 'route' => route('home'), 'active' => request()->routeIs('home')],
         ['label' => 'Tentang Kami', 'route' => route('about'), 'active' => request()->routeIs('about')],

@@ -17,7 +17,7 @@ class SitemapController extends Controller
         $urls = ['/' => '1.0', '/tentang-kami' => '0.9', '/produk' => '0.9', '/proyek' => '0.8', '/berita' => '0.7', '/karir' => '0.6', '/kontak' => '0.9', '/cabang' => '0.8', '/tahukah-anda' => '0.6'];
 
         $categories = ProductCategory::query()->active()->get();
-        $products = Product::query()->active()->get();
+        $products = Product::query()->active()->with('category')->get();
         $projects = Project::query()->active()->get();
         $news = News::query()->active()->get();
         $careers = Career::query()->open()->get();

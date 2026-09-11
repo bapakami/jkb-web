@@ -37,15 +37,16 @@
         @stack('head')
     </head>
     <body class="font-sans antialiased bg-white text-jkb-gray-dark">
+        @php $categories = \App\Models\ProductCategory::query()->active()->get(); @endphp
         @include('partials.topbar')
-        @include('partials.navbar')
+        @include('partials.navbar', ['categories' => $categories])
 
         <main>
             {{ $slot }}
         </main>
 
         @include('partials.whatsapp-button')
-        @include('partials.footer')
+        @include('partials.footer', ['categories' => $categories])
 
         @stack('scripts')
     </body>

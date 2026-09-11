@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\RecordPageVisit;
+use App\Http\Middleware\SecurityHeaders;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -13,7 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->trustProxies(at: '*');
-        $middleware->web(append: [RecordPageVisit::class]);
+        $middleware->web(append: [RecordPageVisit::class, SecurityHeaders::class]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

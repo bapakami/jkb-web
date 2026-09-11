@@ -84,7 +84,7 @@
 
                     @if (!empty($product->specifications))
                         <h2 class="mt-10 text-xl font-black text-jkb-gray-dark">Spesifikasi Teknis</h2>
-                        <div class="mt-4 overflow-hidden rounded-xl glass ring-1 ring-white/60 shadow-sm">
+                        <div class="mt-4 overflow-x-auto rounded-xl glass ring-1 ring-white/60 shadow-sm">
                             <table class="w-full text-left text-sm">
                                 <tbody class="divide-y divide-jkb-gray-light">
                                     @foreach ($product->specifications as $key => $value)

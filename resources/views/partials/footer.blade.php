@@ -8,8 +8,6 @@
     $instagram = jkb_setting('social_instagram', '#');
     $facebook = jkb_setting('social_facebook', '#');
     $youtube = jkb_setting('social_youtube', '#');
-    $categories = \App\Models\ProductCategory::query()->active()->get();
-    $mainBranches = \App\Models\Branch::query()->where('type', '!=', 'plant')->take(2)->get();
 @endphp
 
 <footer class="bg-jkb-navy text-gray-300">
@@ -30,15 +28,21 @@
                     <x-heroicon-m-arrow-right class="h-3.5 w-3.5" />
                 </a>
                 <div class="mt-5 flex items-center gap-3">
-                    <a href="{{ $instagram }}" target="_blank" rel="noopener" class="grid h-9 w-9 place-items-center rounded-full bg-white/10 transition hover:bg-jkb-yellow hover:text-jkb-navy" aria-label="Instagram">
-                        <x-heroicon-m-camera class="h-4 w-4" />
-                    </a>
-                    <a href="{{ $facebook }}" target="_blank" rel="noopener" class="grid h-9 w-9 place-items-center rounded-full bg-white/10 transition hover:bg-jkb-yellow hover:text-jkb-navy" aria-label="Facebook">
-                        <x-heroicon-m-user-group class="h-4 w-4" />
-                    </a>
-                    <a href="{{ $youtube }}" target="_blank" rel="noopener" class="grid h-9 w-9 place-items-center rounded-full bg-white/10 transition hover:bg-jkb-yellow hover:text-jkb-navy" aria-label="YouTube">
-                        <x-heroicon-m-play class="h-4 w-4" />
-                    </a>
+                    @if ($instagram && $instagram !== '#')
+                        <a href="{{ $instagram }}" target="_blank" rel="noopener" class="grid h-9 w-9 place-items-center rounded-full bg-white/10 transition hover:bg-jkb-yellow hover:text-jkb-navy" aria-label="Instagram">
+                            <x-heroicon-m-camera class="h-4 w-4" />
+                        </a>
+                    @endif
+                    @if ($facebook && $facebook !== '#')
+                        <a href="{{ $facebook }}" target="_blank" rel="noopener" class="grid h-9 w-9 place-items-center rounded-full bg-white/10 transition hover:bg-jkb-yellow hover:text-jkb-navy" aria-label="Facebook">
+                            <x-heroicon-m-user-group class="h-4 w-4" />
+                        </a>
+                    @endif
+                    @if ($youtube && $youtube !== '#')
+                        <a href="{{ $youtube }}" target="_blank" rel="noopener" class="grid h-9 w-9 place-items-center rounded-full bg-white/10 transition hover:bg-jkb-yellow hover:text-jkb-navy" aria-label="YouTube">
+                            <x-heroicon-m-play class="h-4 w-4" />
+                        </a>
+                    @endif
                 </div>
             </div>
 

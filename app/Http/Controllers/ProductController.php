@@ -24,7 +24,7 @@ class ProductController extends Controller
     {
         abort_unless($category->is_active, 404);
 
-        $products = $category->activeProducts()->get();
+        $products = $category->activeProducts()->with('category')->get();
         $otherCategories = ProductCategory::query()->active()
             ->whereKeyNot($category->getKey())
             ->orderBy('sort_order')
@@ -38,6 +38,7 @@ class ProductController extends Controller
         abort_unless($category->is_active && $product->is_active && $product->category_id === $category->id, 404);
 
         $related = Product::query()->active()
+            ->with('category')
             ->where('category_id', $category->id)
             ->whereKeyNot($product->getKey())
             ->orderBy('sort_order')

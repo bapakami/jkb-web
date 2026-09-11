@@ -30,7 +30,7 @@ Route::get('/karir', [CareerController::class, 'index'])->name('careers.index');
 Route::get('/karir/{career:slug}', [CareerController::class, 'show'])->name('careers.show');
 
 Route::get('/kontak', [ContactController::class, 'index'])->name('contact');
-Route::post('/kontak', [ContactController::class, 'submit'])->name('contact.submit');
+Route::post('/kontak', [ContactController::class, 'submit'])->name('contact.submit')->middleware('throttle:5,1');
 
 Route::get('/cabang', [BranchController::class, 'index'])->name('branches.index');
 Route::get('/cabang/{branch:slug}', [BranchController::class, 'show'])->name('branches.show');
