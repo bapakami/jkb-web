@@ -34,11 +34,11 @@
         .jkb-map-container { z-index: 0; }
         .jkb-map-container .leaflet-container {
             font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
-            background: #080A0E;
+            background: #EEF0F3;
         }
 
         .jkb-map-container .leaflet-tile {
-            filter: brightness(1.04) contrast(1.12) saturate(0.62);
+            filter: none;
         }
 
         .jkb-map-overlay {
@@ -47,20 +47,20 @@
             z-index: 450;
             pointer-events: none;
             background:
-                radial-gradient(120% 90% at 50% 32%, rgba(43, 46, 51, 0) 0%, rgba(6, 8, 11, 0.42) 100%);
+                radial-gradient(120% 90% at 50% 32%, rgba(255, 255, 255, 0) 0%, rgba(23, 26, 31, 0.10) 100%);
         }
 
         .jkb-map-container .leaflet-control-attribution {
-            background: rgba(8, 10, 14, 0.62) !important;
-            color: #8A919C;
+            background: rgba(255, 255, 255, 0.82) !important;
+            color: #4B5563;
             font-size: 10px;
         }
-        .jkb-map-container .leaflet-control-attribution a { color: #FFC72C; }
+        .jkb-map-container .leaflet-control-attribution a { color: #0F3B5F; }
 
         .jkb-map-container .leaflet-control-zoom a {
-            background: rgba(23, 26, 31, 0.9);
-            color: #E5E7EB;
-            border-color: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.92);
+            color: #171A1F;
+            border-color: rgba(23, 26, 31, 0.12);
         }
         .jkb-map-container .leaflet-control-zoom a:hover { background: rgba(255, 199, 44, 0.9); color: #171A1F; }
 
@@ -73,9 +73,10 @@
             border-radius: 9999px;
             background: #FFC72C;
             box-shadow:
-                0 0 0 2px rgba(255, 255, 255, 0.9),
-                0 0 16px rgba(255, 199, 44, 0.85),
-                0 6px 16px rgba(0, 0, 0, 0.55);
+                inset 0 0 0 1px rgba(180, 132, 0, 0.55),
+                0 0 0 2px rgba(255, 255, 255, 0.95),
+                0 0 0 4px rgba(23, 26, 31, 0.30),
+                0 6px 16px rgba(0, 0, 0, 0.45);
         }
 
         .jkb-map-pin-ring {
@@ -781,11 +782,11 @@
 
         const map = L.map(mapEl, { zoomControl: true, minZoom: 4 });
 
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             minZoom: 4,
-            subdomains: 'abcd',
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abc',
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         }).addTo(map);
 
         const markers = markersData.map(function (m) {
